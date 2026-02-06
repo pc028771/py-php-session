@@ -235,29 +235,6 @@ session.save_handler = redis
 session.save_path = "tcp://localhost:6379?prefix=PHPREDIS_SESSION:"
 ```
 
-## Migration from b2e-iopenmall
-
-If you're migrating from the original implementation:
-
-```python
-# Before (b2e-iopenmall)
-from app.core.session import SessionManager, session_manager
-from app.core.config import settings
-
-# After (py-php-session)
-from php_session import SessionManager, SessionConfig
-from php_session.contrib.starlette import PHPSessionMiddleware
-
-# Create config from settings
-config = SessionConfig(
-    session_expire=settings.SESSION_EXPIRE,
-    lock_timeout=settings.SESSION_LOCK_TIMEOUT,
-)
-
-# Create manager with config
-session_manager = SessionManager(redis_client, config)
-```
-
 ## License
 
 MIT License - see LICENSE file for details.
