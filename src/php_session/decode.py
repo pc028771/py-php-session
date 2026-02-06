@@ -46,8 +46,10 @@ def decode_json_fields(
             json_prefix and key.startswith(json_prefix)
         )
 
-        if should_decode:
-            with contextlib.suppress(json.JSONDecodeError, ValueError):
-                data[key] = json.loads(value)
+        if not should_decode:
+            continue
+
+        with contextlib.suppress(json.JSONDecodeError, ValueError):
+            data[key] = json.loads(value)
 
     return data

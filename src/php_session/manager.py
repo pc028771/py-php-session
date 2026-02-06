@@ -16,7 +16,7 @@ from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from typing import Any
 
-import phpserialize  # type: ignore[import-untyped]
+import phpserialize
 from redis.asyncio import Redis
 
 from .config import SessionConfig
@@ -52,7 +52,7 @@ class SessionManager:
 
     def __init__(
         self,
-        redis: Redis,  # type: ignore[type-arg]
+        redis: Redis[bytes],
         config: SessionConfig | None = None,
         logger: logging.Logger | None = None,
     ) -> None:
